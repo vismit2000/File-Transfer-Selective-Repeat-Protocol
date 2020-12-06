@@ -1,5 +1,11 @@
 # File transfer using Selective Repeat protocol over UDP
 
+## Overview
+
+- Implemented a reliable connection on top of UDP communication which uses Selective Repeat protocol.
+- File is divided into equal sized chunks, each chunk transmitted separately.
+- Packets could be lost at relay nodes randomly, server handles out-of-order delivery and reassembles output file.
+
 ## Problem-1: File transfer using multi-channel stop-and-wait protocol
 
 ### Problem Statement
@@ -26,6 +32,17 @@ Write client and server programs to *upload* a given file (“input.txt”) from
     2. `./client {inputfile.txt}` (It takes the name of the input file as command line argument)
     
 - Output is stored in the file *output.txt*.
+
+### Notes for running the code
+
+Change the following parameters if required while testing in `packet.h`:
+
+- Packet drop rate (PDR)
+- server port number (PORT)
+- payload size (PACKET_SIZE)
+- timeout value (TIMEOUT)
+- max number of tries in case of not receiving ack (MAXPENDING)
+
 
 ### Methodology
 
@@ -59,6 +76,10 @@ Write client and server programs to *upload* a given file (“input.txt”) from
     client_list and in the next iteration we will add it to the `readfds` to monitor for *activity* from this client.
     - Similarly, if an old client sends some data, `readfds` will be activated and we will check from the list of existing client to see which 
     client has sent the data.
+
+### Demo
+
+Demo for Problem-1 can be accessed here: ![Demo](./Demo_Problem_1.mp4)
 
 
 ## Problem-2: File transfer using Selective Repeat protocol over UDP
@@ -97,6 +118,20 @@ C uploads *input.txt* to S. All odd-numbered packets go through the relay node R
     
 - Output is stored in the file *output.txt*.
 
+### Notes for running the code
+
+Change the following parameters if required while testing in `packet.h`:
+
+- Packet drop rate (PDR)
+- server port number (PORT)
+- payload size (PACKET_SIZE)
+- timeout value (TIMEOUT)
+- max number of tries in case of not receiving ack (MAXPENDING)
+- Relay1 port (RPORT0)
+- Relay2 port (RPORT1)
+- Random delay upper limit (DELAY_MAX)
+- Window Size (WINDOW_SIZE)
+
 ### Methodology
 
 ![Problem2_Working](./Images/Problem2_Working.png?raw=true "Problem2_Working")
@@ -123,3 +158,7 @@ C uploads *input.txt* to S. All odd-numbered packets go through the relay node R
     - Opens one socket to client and one to server
 
 - All the logs with *timestamp* are stored in the file *log_file.txt*
+
+### Demo
+
+Demo for Problem-2 can be accessed here: ![Demo](./Demo_Problem_2.mp4)
