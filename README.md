@@ -79,7 +79,7 @@ Change the following parameters if required while testing in `packet.h`:
 
 ### Demo
 
-Demo for Problem-1 can be accessed here: ![Demo](./Demo_Problem_1.mp4)
+Demo for Problem-1 can be accessed here: [Demo](./Demo_Problem_1.mp4)
 
 
 ## Problem-2: File transfer using Selective Repeat protocol over UDP
@@ -161,4 +161,4 @@ Change the following parameters if required while testing in `packet.h`:
 
 ### Demo
 
-Demo for Problem-2 can be accessed here: ![Demo](./Demo_Problem_2.mp4)
+Demo for Problem-2 can be accessed here: [Demo](./Demo_Problem_2.mp4)
